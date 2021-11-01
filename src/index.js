@@ -30,7 +30,7 @@ const getTopPerformers = (cryptoListObject) => {
       const changeValue = (1 - yesterdayVal / currentValue) * 100;
       acc.push({
         coin: ce,
-        valueChange: changeValue,
+        valueChange: changeValue.toFixed(3),
         displayValue: `*${ce}:* _${changeValue}%_`,
       });
       return acc;
