@@ -36,7 +36,7 @@ const getTopPerformers = (cryptoListObject) => {
     });
     return acc;
   }, []);
-  return _.sortBy(performers, ["valueChange"], ["asc"]);
+  return _.orderBy(performers, ["valueChange"], ["desc"]);
 };
 
 const getLatestPrice = () => {
