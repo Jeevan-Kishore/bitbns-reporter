@@ -26,7 +26,8 @@ const escapeStr = (str) => {
 const getTopPerformers = (cryptoListObject) => {
   const cryptos = Object.keys(cryptoListObject);
   const performers = cryptos.reduce((acc, ce) => {
-    if (_.isEmpty(cryptoListObject[ce]["volume"])) {
+    const volObj = cryptoListObject[ce]["volume"];
+    if (_.isEmpty(volObj) || volObj.volume < 1) {
       return acc;
     }
 
