@@ -6,7 +6,7 @@ const bitbns = new bitbnsApi({
   apiSecretKey: process.env.BIT_BNS_SECRET_KEY,
 });
 
-const client = TelegramClient({
+const client = new TelegramClient({
   accessToken: process.env.TELEGRAM_API_KEY,
 });
 
