@@ -10,6 +10,17 @@ const client = new TelegramClient({
   accessToken: process.env.TELEGRAM_API_KEY,
 });
 
+const escapeStr = (str) => {
+  return str
+    .replace(/_/gi, "\\_")
+    .replace(/-/gi, "\\-")
+    .replace("~", "\\~")
+    .replace(/`/gi, "\\`")
+    .replace(/\./g, "\\.")
+    .replace(/\</g, "\\<")
+    .replace(/\>/g, "\\>");
+};
+
 const getTopPerformers = (cryptoListObject) => {
   const cryptos = Object.keys(cryptoListObject);
   return cryptos
@@ -32,7 +43,7 @@ const getLatestPrice = () => {
     const performers = getTopPerformers(data);
     sendOutMessage(
       performers
-        .map((item) => item.displayValue)
+        .map((item) => escapeStr(item.displayValue))
         .slice(0, 50)
         .join(" ")
     );
