@@ -43,12 +43,12 @@ const getLatestPrice = () => {
   bitbns.fetchTickers((error, data) => {
     const performers = getTopPerformers(data);
     sendOutMessage(`
-    ====================================================
       ${performers
         .map((item) => escapeStr(item.displayValue))
         .slice(0, 30)
         .join(" \n")}
-    ================================================`
+    
+    \n`
     );
   });
 };
