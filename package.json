@@ -1,0 +1,24 @@
+{
+  "name": "bitbns-reporter",
+  "version": "1.0.0",
+  "description": "Informer of current top crypto performers",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-reporter": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jeevan-Kishore/bitbns-reporter.git"
+  },
+  "author": "jeevan kishore <kishor080@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jeevan-Kishore/bitbns-reporter/issues"
+  },
+  "homepage": "https://github.com/Jeevan-Kishore/bitbns-reporter#readme",
+  "dependencies": {
+    "bitbns": "^3.0.18",
+    "messaging-api-telegram": "^1.1.0"
+  }
+}
