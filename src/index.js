@@ -18,6 +18,7 @@ const escapeStr = (str) => {
     .replace(/`/gi, "\\`")
     .replace(/\./g, "\\.")
     .replace(/\</g, "\\<")
+    .replace(/=/g, "\\=")
     .replace(/\>/g, "\\>");
 };
 
