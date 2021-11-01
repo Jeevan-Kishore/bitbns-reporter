@@ -1,5 +1,6 @@
 const { TelegramClient } = require("messaging-api-telegram");
 const bitbnsApi = require("bitbns");
+const _ = require("lodash");
 
 const bitbns = new bitbnsApi({
   apiKey: process.env.BIT_BNS_API_KEY,
@@ -24,21 +25,18 @@ const escapeStr = (str) => {
 
 const getTopPerformers = (cryptoListObject) => {
   const cryptos = Object.keys(cryptoListObject);
-  return cryptos
-    .reduce((acc, ce) => {
-      const currentValue = cryptoListObject[ce]["last_traded_price"];
-      const yesterdayVal = cryptoListObject[ce]["yes_price"];
-      const valueChange = (1 - yesterdayVal / currentValue) * 100;
-        console.log(" DEBUG: ", "--------------------------->", ce, valueChange);
-
-        acc.push({
-        coin: ce,
-        valueChange,
-        displayValue: `*${ce}:* ${valueChange.toFixed(3)}%`,
-      });
-      return acc;
-    }, [])
-    .sort((a, b) => b.valueChange - a.valueChange);
+  const performers = cryptos.reduce((acc, ce) => {
+    const currentValue = cryptoListObject[ce]["last_traded_price"];
+    const yesterdayVal = cryptoListObject[ce]["yes_price"];
+    const valueChange = (1 - yesterdayVal / currentValue) * 100;
+    acc.push({
+      coin: ce,
+      valueChange,
+      displayValue: `*${ce}:* ${valueChange.toFixed(3)}%`,
+    });
+    return acc;
+  }, []);
+  return _.sortBy(performers, ["valueChange"], ["desc"]);
 };
 
 const getLatestPrice = () => {

@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Jeevan-Kishore/bitbns-reporter#readme",
   "dependencies": {
     "bitbns": "^3.0.18",
+    "lodash": "^4.17.21",
     "messaging-api-telegram": "^1.1.0"
   },
   "devDependencies": {
