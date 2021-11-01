@@ -28,11 +28,11 @@ const getTopPerformers = (cryptoListObject) => {
 };
 
 const getLatestPrice = () => {
-  bitbns.fetchTickers((error, data ) => {
-      console.log(" DEBUG: ", "--------------------------->", data);
+  bitbns.fetchTickers((error, data) => {
+    console.log(" DEBUG: ", "--------------------------->", data);
     const performers = getTopPerformers(data);
     sendOutMessage(`===========
-    ${performers.join("%0A")}
+    ${performers.map((item) => item.displayValue).join("%0A")}
     ==================`);
   });
 };
