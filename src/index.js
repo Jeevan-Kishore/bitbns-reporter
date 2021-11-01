@@ -35,7 +35,7 @@ const getTopPerformers = (cryptoListObject) => {
       });
       return acc;
     }, [])
-    .sort((a, b) => a.valueChange - b.valueChange);
+    .sort((a, b) => b.valueChange - a.valueChange);
 };
 
 const getLatestPrice = () => {
@@ -45,7 +45,7 @@ const getLatestPrice = () => {
       performers
         .map((item) => escapeStr(item.displayValue))
         .slice(0, 50)
-        .join("\\ ")
+        .join(" <br />")
     );
   });
 };
