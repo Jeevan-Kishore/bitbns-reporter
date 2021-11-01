@@ -26,6 +26,10 @@ const escapeStr = (str) => {
 const getTopPerformers = (cryptoListObject) => {
   const cryptos = Object.keys(cryptoListObject);
   const performers = cryptos.reduce((acc, ce) => {
+    if (_.isEmpty(cryptoListObject[ce]["volume"])) {
+      return acc;
+    }
+
     const currentValue = cryptoListObject[ce]["last_traded_price"];
     const yesterdayVal = cryptoListObject[ce]["yes_price"];
     const valueChange = (1 - yesterdayVal / currentValue) * 100;
@@ -46,7 +50,7 @@ const getLatestPrice = () => {
     \n
       ${performers
         .map((item) => escapeStr(item.displayValue))
-        .slice(0, 30)
+        .slice(0, 40)
         .join(" \n")}
     \n`);
   });
