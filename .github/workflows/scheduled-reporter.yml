@@ -26,7 +26,6 @@ jobs:
       - name: Run reporter
         run: npm run start-reporter
         env:
-          CI: true
           TELEGRAM_API_KEY: ${{ secrets.TELEGRAM_API_KEY }}
           BIT_BNS_API_KEY: ${{ secrets.BIT_BNS_API_KEY }}
           BIT_BNS_SECRET_KEY: ${{ secrets.BIT_BNS_SECRET_KEY }}
