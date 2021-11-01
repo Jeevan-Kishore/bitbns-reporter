@@ -33,19 +33,18 @@ const getLatestPrice = () => {
     sendOutMessage(
       performers
         .map((item) => item.displayValue)
-        .slice(0, 40)
-        .join("%0A")
+        .slice(0, 50)
+        .join(" <br /> ")
     );
   });
 };
 
 const sendOutMessage = (message) => {
-  client.sendMessage(1050401913, message);
+  client.sendMessage(1050401913, message, { parseMode: "MarkdownV2" });
 };
 
 const main = () => {
   getLatestPrice(bitbns);
-  sendOutMessage(client);
 };
 
 main();
