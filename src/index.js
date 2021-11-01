@@ -24,6 +24,7 @@ const escapeStr = (str) => {
 
 const getTopPerformers = (cryptoListObject) => {
   const cryptos = Object.keys(cryptoListObject);
+  console.log(" DEBUG: ", "--------------------------->", cryptos);
   return cryptos
     .reduce((acc, ce) => {
       const currentValue = cryptoListObject[ce]["last_traded_price"];
@@ -43,13 +44,12 @@ const getLatestPrice = () => {
   bitbns.fetchTickers((error, data) => {
     const performers = getTopPerformers(data);
     sendOutMessage(`
+    \n
       ${performers
         .map((item) => escapeStr(item.displayValue))
         .slice(0, 30)
         .join(" \n")}
-    
-    \n`
-    );
+    \n`);
   });
 };
 
