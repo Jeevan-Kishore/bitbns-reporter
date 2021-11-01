@@ -27,15 +27,15 @@ const getTopPerformers = (cryptoListObject) => {
     .reduce((acc, ce) => {
       const currentValue = cryptoListObject[ce]["last_traded_price"];
       const yesterdayVal = cryptoListObject[ce]["yes_price"];
-      const changeValue = (1 - yesterdayVal / currentValue) * 100;
+      const valueChange = (1 - yesterdayVal / currentValue) * 100;
       acc.push({
         coin: ce,
-        valueChange: changeValue,
-        displayValue: `*${ce}:* _ ${changeValue.toFixed(3)}% _`,
+        valueChange,
+        displayValue: `*${ce}:* ${valueChange.toFixed(3)}%`,
       });
       return acc;
     }, [])
-    .sort((a, b) => a - b);
+    .sort((a, b) => a.valueChange - b.valueChange);
 };
 
 const getLatestPrice = () => {
@@ -45,7 +45,7 @@ const getLatestPrice = () => {
       performers
         .map((item) => escapeStr(item.displayValue))
         .slice(0, 50)
-        .join("\ ")
+        .join("\\ ")
     );
   });
 };
