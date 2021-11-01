@@ -24,13 +24,14 @@ const escapeStr = (str) => {
 
 const getTopPerformers = (cryptoListObject) => {
   const cryptos = Object.keys(cryptoListObject);
-  console.log(" DEBUG: ", "--------------------------->", cryptos);
   return cryptos
     .reduce((acc, ce) => {
       const currentValue = cryptoListObject[ce]["last_traded_price"];
       const yesterdayVal = cryptoListObject[ce]["yes_price"];
       const valueChange = (1 - yesterdayVal / currentValue) * 100;
-      acc.push({
+        console.log(" DEBUG: ", "--------------------------->", ce, valueChange);
+
+        acc.push({
         coin: ce,
         valueChange,
         displayValue: `*${ce}:* ${valueChange.toFixed(3)}%`,
