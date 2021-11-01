@@ -30,7 +30,7 @@ const getTopPerformers = (cryptoListObject) => {
 const getLatestPrice = () => {
   bitbns.fetchTickers((error, data) => {
     const performers = getTopPerformers(data);
-    sendOutMessage(performers.map((item) => item.displayValue));
+    sendOutMessage(performers.map((item) => item.displayValue).slice(0, 20));
   });
 };
 
