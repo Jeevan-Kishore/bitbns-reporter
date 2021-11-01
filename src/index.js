@@ -31,7 +31,7 @@ const getTopPerformers = (cryptoListObject) => {
       acc.push({
         coin: ce,
         valueChange,
-        displayValue: `- *${ce}:* ${valueChange.toFixed(3)}%`,
+        displayValue: `*${ce}:* ${valueChange.toFixed(3)}%`,
       });
       return acc;
     }, [])
@@ -41,11 +41,13 @@ const getTopPerformers = (cryptoListObject) => {
 const getLatestPrice = () => {
   bitbns.fetchTickers((error, data) => {
     const performers = getTopPerformers(data);
-    sendOutMessage(
-      performers
+    sendOutMessage(`
+    ====================================================
+      ${performers
         .map((item) => escapeStr(item.displayValue))
-        .slice(0, 50)
-        .join("  ")
+        .slice(0, 30)
+        .join(" \n")}
+    ================================================`
     );
   });
 };
