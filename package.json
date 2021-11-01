@@ -20,5 +20,8 @@
   "dependencies": {
     "bitbns": "^3.0.18",
     "messaging-api-telegram": "^1.1.0"
+  },
+  "devDependencies": {
+    "prettier": "^2.4.1"
   }
 }
